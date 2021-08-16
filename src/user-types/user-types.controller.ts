@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UserTypesService } from './user-types.service';
 import { CreateUserTypeDto } from './dto/create-user-type.dto';
 import { UpdateUserTypeDto } from './dto/update-user-type.dto';
+import { UserType } from './entities/user-type.entity';
 
 @Controller('user-types')
 export class UserTypesController {
@@ -9,11 +10,12 @@ export class UserTypesController {
 
   @Post()
   create(@Body() createUserTypeDto: CreateUserTypeDto) {
+  
     return this.userTypesService.create(createUserTypeDto);
   }
 
   @Get()
-  findAll() {
+  findAll(): Promise<UserType[]> {
     return this.userTypesService.findAll();
   }
 

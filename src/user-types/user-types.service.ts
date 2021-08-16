@@ -8,16 +8,17 @@ import { UserType } from './entities/user-type.entity';
 @Injectable()
 export class UserTypesService {
   constructor(
-    @InjectRepository(UserType) 
+    @InjectRepository(UserType)   
     private UserType : Repository<UserType>
   ){}
 
 
   create( createUserTypeDto: CreateUserTypeDto) {
- return this.UserType.create( createUserTypeDto);
+    console.log(createUserTypeDto);
+ return this.UserType.save( createUserTypeDto);
   }
 
-  findAll() {
+  findAll(): Promise<UserType[]> {
     return this.UserType.find();
   }
 
