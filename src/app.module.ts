@@ -6,6 +6,9 @@ import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
 import { UserTypesModule } from './user-types/user-types.module';
 import { UserType } from './user-types/entities/user-type.entity';
+import { VehicleModule } from './vehicle/vehicle.module';
+import { Vehicle } from './vehicle/entities/vehicle.entity';
+import { VehicleMake } from './vehicle/entities/vehicle_make_entity';
 
 @Module({
   imports: [
@@ -16,11 +19,11 @@ import { UserType } from './user-types/entities/user-type.entity';
       username: 'root',
       password: 'Root@1234',
       database: 'TUZIDI',
-      entities: [User, UserType],
+      entities: [ UserType ,User, Vehicle, VehicleMake],
       synchronize: true,
     }),
-    UsersModule,
-    UserTypesModule],
+    
+    UserTypesModule, UsersModule, VehicleModule],
   controllers: [AppController],
   providers: [AppService],
 })
